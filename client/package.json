@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
+    "@nuxt/http": "^0.6.4",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {
