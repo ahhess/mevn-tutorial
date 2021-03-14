@@ -1,11 +1,11 @@
 'use strict';
 
-const User = require('../models/user_schema');
+const Project = require('../models/project_schema');
 
-const createUser = (req, res) => {
-  User.create(req.body)
+const createProject = (req, res) => {
+  Project.create(req.body)
     .then((data) => {
-      console.log('New User Created!', data);
+      console.log('New Project Created!', data);
       res.status(201).json(data);
     })
     .catch((err) => {
@@ -19,8 +19,8 @@ const createUser = (req, res) => {
     });
 };
 
-const readUser = (req, res) => {
-  User.find()
+const readProject = (req, res) => {
+  Project.find()
     .then((data) => {
       res.status(200).json(data);
     })
@@ -31,8 +31,8 @@ const readUser = (req, res) => {
 };
 
 
-const readOneUser = (req, res) => {
-  User.findById(req.params.id)
+const readOneProject = (req, res) => {
+  Project.findById(req.params.id)
     .then((data) => {
       res.status(200).json(data);
     })
@@ -42,13 +42,13 @@ const readOneUser = (req, res) => {
     });
 };
 
-const updateUser = (req, res) => {
-  User.findByIdAndUpdate(req.params.id, req.body, {
+const updateProject = (req, res) => {
+  Project.findByIdAndUpdate(req.params.id, req.body, {
     useFindAndModify: false,
     new: true,
   })
     .then((data) => {
-      console.log('User updated!');
+      console.log('Project updated!');
       res.status(201).json(data);
     })
     .catch((err) => {
@@ -62,16 +62,16 @@ const updateUser = (req, res) => {
     });
 };
 
-const deleteUser = (req, res) => {
-  User.findById(req.params.id)
+const deleteProject = (req, res) => {
+  Project.findById(req.params.id)
     .then((data) => {
       if (!data) {
-        throw new Error('User not available');
+        throw new Error('Project not available');
       }
       return data.remove();
     })
     .then((data) => {
-      console.log('User removed!');
+      console.log('Project removed!');
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -81,9 +81,9 @@ const deleteUser = (req, res) => {
 };
 
 module.exports = {
-  createUser,
-  readUser,
-  readOneUser,
-  updateUser,
-  deleteUser,
+  createProject,
+  readProject,
+  readOneProject,
+  updateProject,
+  deleteProject,
 };
