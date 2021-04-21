@@ -9,8 +9,8 @@
 </template>
 <script>
 export default {
-  async asyncData({ $http, id }) {
-    const project = await $http.$get('http://localhost:9000/api/project/', id)
+  async asyncData({ $http, $config: { baseURL }, id }) {
+    const project = await $http.$get(`${baseURL}/project`, id)
     return { project }
   },
 }

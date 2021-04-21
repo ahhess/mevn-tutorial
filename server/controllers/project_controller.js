@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 
-const Project = require('../models/project_schema');
+const Project = require("../models/project_schema");
 
 const createProject = (req, res) => {
   Project.create(req.body)
     .then((data) => {
-      console.log('New Project Created!', data);
+      console.log("New Project Created!", data);
       res.status(201).json(data);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
-        console.error('Error Validating!', err);
+      if (err.name === "ValidationError") {
+        console.error("Error Validating!", err);
         res.status(422).json(err);
       } else {
         console.error(err);
@@ -30,7 +30,6 @@ const readProject = (req, res) => {
     });
 };
 
-
 const readOneProject = (req, res) => {
   Project.findById(req.params.id)
     .then((data) => {
@@ -48,12 +47,12 @@ const updateProject = (req, res) => {
     new: true,
   })
     .then((data) => {
-      console.log('Project updated!');
+      console.log("Project updated!");
       res.status(201).json(data);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
-        console.error('Error Validating!', err);
+      if (err.name === "ValidationError") {
+        console.error("Error Validating!", err);
         res.status(422).json(err);
       } else {
         console.error(err);
@@ -66,12 +65,12 @@ const deleteProject = (req, res) => {
   Project.findById(req.params.id)
     .then((data) => {
       if (!data) {
-        throw new Error('Project not available');
+        throw new Error("Project not available");
       }
       return data.remove();
     })
     .then((data) => {
-      console.log('Project removed!');
+      console.log("Project removed!");
       res.status(200).json(data);
     })
     .catch((err) => {

@@ -13,8 +13,8 @@
 </template>
 <script>
 export default {
-  async asyncData({ $http }) {
-    const users = await $http.$get('http://localhost:9000/api/user')
+  async asyncData({ $http, $config: { baseURL } }) {
+    const users = await $http.$get(`${baseURL}/user`)
     return { users }
   },
 }
