@@ -4,26 +4,48 @@ const projectSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "project name field is required"],
+      required: [true],
     },
     projectNumber: {
       type: String,
-      required: [true, "project number field is required"],
+      required: [true],
     },
     budget: {
       type: Number,
-      required: [false],
     },
     activities: [
       {
         activity: {
           name: {
             type: String,
-            required: [true, "activity name field is required"],
+            required: [true],
           },
           orderNumber: {
             type: Number,
-            required: [true, "order number field is required"],
+            required: [true],
+          },
+          status: {
+            type: String,
+          }
+        },
+      },
+    ],
+    skills: [
+      {
+        skill: {
+          name: {
+            type: String,
+            required: [true],
+          },
+          short: {
+            type: String,
+            required: [true],
+          },
+          price: {
+            type: Number,
+          },
+          budget: {
+            type: Number,
           },
         },
       },
