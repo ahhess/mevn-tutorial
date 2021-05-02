@@ -3,8 +3,8 @@
     <h1>Projects</h1>
 
     <ul>
-      <li v-for="project in projects" :key="project.id">
-        <NuxtLink :to="{ name: 'project', params: { id: project.id } }">
+      <li v-for="project in projects" :key="project._id">
+        <NuxtLink :to="`/project/${project._id}`">
           {{ project.projectNumber }} : {{ project.name }}
         </NuxtLink>
       </li>
